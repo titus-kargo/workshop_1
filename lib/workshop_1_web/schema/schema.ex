@@ -36,9 +36,24 @@ defmodule Workshop1Web.Schema do
       resolve(&Vehicles.create_vehicle/3)
     end
 
+    field :update_vehicle_status, :vehicle do
+      arg(:input, :status_input)
+      resolve(&Vehicles.update_vehicle/3)
+    end
+
     field :create_transporter, :transporter do
       arg(:input, :transporter_input)
       resolve(&Transporters.create_transporter/3)
     end
+
+    field :update_transporter_status, :transporter do
+      arg(:input, :status_input)
+      resolve(&Transporters.update_transporter/3)
+    end
+  end
+
+  input_object :status_input do
+    field :id, :id
+    field :status, :string
   end
 end

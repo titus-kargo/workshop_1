@@ -50,6 +50,7 @@ defmodule Workshop1.Vehicles do
 
   """
   def create_vehicle(attrs \\ %{}) do
+    attrs = Map.put(attrs, :status, "not_validated")
     %Vehicle{}
     |> Vehicle.changeset(attrs)
     |> Repo.insert()

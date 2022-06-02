@@ -50,6 +50,7 @@ defmodule Workshop1.Transporters do
 
   """
   def create_transporter(attrs \\ %{}) do
+    attrs = Map.put(attrs, :status, "not_validated")
     %Transporter{}
     |> Transporter.changeset(attrs)
     |> Repo.insert()
