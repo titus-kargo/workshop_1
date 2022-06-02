@@ -31,6 +31,11 @@ defmodule Workshop1Web.Router do
     put "/transporter/status/:id", TransporterController, :status_update
   end
 
+  scope "graphiql" do
+    forward "/", Absinthe.Plug.GraphiQL,
+      schema: Workshop1Web.Schema
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Workshop1Web do
   #   pipe_through :api

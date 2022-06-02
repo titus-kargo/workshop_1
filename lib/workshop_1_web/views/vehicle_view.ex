@@ -14,6 +14,7 @@ defmodule Workshop1Web.VehicleView do
     %{
       id: vehicle.id,
       license_plate: vehicle.license_plate,
+      transporter: vehicle.transporter_id,
       status: vehicle.status
     }
   end

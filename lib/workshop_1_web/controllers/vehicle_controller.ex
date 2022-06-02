@@ -12,6 +12,7 @@ defmodule Workshop1Web.VehicleController do
 
   def index(conn, _params) do
     vehicles = Vehicles.list_vehicles()
+    IO.inspect(vehicles)
     render(conn, "index.json", vehicles: vehicles)
   end
 
@@ -35,13 +36,13 @@ defmodule Workshop1Web.VehicleController do
   def show(conn, %{"id" => id}) do
     vehicle = Vehicles.get_vehicle!(id)
     transporter = Workshop1.Transporters.get_transporter!(vehicle.transporter_id)
-    res = %{
-      id: vehicle.id,
-      license_plate: vehicle.license_plate,
-      transporter: transporter,
-      status: vehicle.status
-    }
-    render(conn, "show.json", vehicle: res)
+    # res = %{
+    #   id: vehicle.id,
+    #   license_plate: vehicle.license_plate,
+    #   transporter: transporter,
+    #   status: vehicle.status
+    # }
+    render(conn, "show.json", vehicle: vehicle)
   end
 
   def update(conn, %{"id" => id, "vehicle" => vehicle_params}) do
